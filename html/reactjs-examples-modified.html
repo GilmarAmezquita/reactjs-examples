@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="hello-message"></div>
@@ -109,11 +110,11 @@
         class TodoList extends React.Component {
             render() {
                 return (
-                <ul>
+                <ol type="A">
                     {this.props.items.map(item => (
                     <li key={item.id}>{item.text}</li>
                     ))}
-                </ul>
+                </ol>
                 );
             }
         }
