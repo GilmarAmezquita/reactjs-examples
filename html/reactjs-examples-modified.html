@@ -31,15 +31,31 @@
             <HelloMessage name="Gilmar" name2="Jhan"/>,
             document.getElementById('hello-message')
         );
+        //Timer
         class Timer extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { seconds: 0 };
+                this.state = {hours: 0, minutes: 59, seconds: 50 };
             }
             tick() {
+              if(this.state.seconds == 59){
+                if(this.state.minutes == 59){
+                  this.setState(state => ({
+                    seconds:0,
+                    minutes: 0,
+                    hours: state.hours+1
+                  }));
+                }else{
                 this.setState(state => ({
-                seconds: state.seconds + 1
+                  seconds:0,
+                  minutes: state.minutes+1
                 }));
+                }
+              }else{
+                this.setState(state => ({
+                  seconds: state.seconds+1
+                }));
+              }
             }
             componentDidMount() {
                 this.interval = setInterval(() => this.tick(), 1000);
@@ -50,7 +66,7 @@
             render() {
                 return (
                 <div>
-                    Seconds: {this.state.seconds}
+                    {this.state.hours}:{this.state.minutes}:{this.state.seconds}
                 </div>
                 );
             }
@@ -59,7 +75,6 @@
             <Timer />,
             document.getElementById('timer')
         );
-
         //To Do
         class TodoApp extends React.Component {
             constructor(props) {
